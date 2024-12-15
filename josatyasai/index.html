@@ -24,7 +24,7 @@
         max-width: 500px;
         background: #fff;
         padding: 50px;
-        border-radius: 14px;
+        border-radius: 3px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       }
       .line-container {
@@ -38,13 +38,13 @@
         flex: 1;
         height: 1px;
         background-color: #ccc;
-        margin: 0 7px; 
+        margin: 0 7px;
       }
 
       .text {
-        font-family: Arial, sans-serif; 
+        font-family: Arial, sans-serif;
         font-size: 20px;
-        color: #ec4899; 
+        color: #ec4899;
         font-weight: bold;
       }
       .offer-box {
@@ -112,13 +112,13 @@
         font-size: 16px;
         font-weight: bold;
         color: #333;
-        margin-left: 20px;
+        margin-left: 30px;
       }
 
       .strike-price {
         font-size: 10px;
         color: #9ca3af;
-        margin-left: 20px;
+        margin-left: 30px;
         text-decoration: line-through;
       }
 
@@ -130,15 +130,32 @@
       }
 
       .selectors {
-        display: flex;
-        justify-content: space-between;
-        gap: 5px; 
+        display: none;
+        flex-direction: column;
+        gap: 10px;
         margin-top: 10px;
+        top: 100%;
+        left: 0;
+        border-radius: 4px;
+        padding: 10px;
+        z-index: 10;
       }
+
+      .selectors.open {
+        display: flex;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between; /* Distribute columns equally */
+        gap: 20px; /* Space between columns */
+      }
+
+      /* Each column inside a row */
       .column {
+        flex: 1; /* Take equal space */
+        max-width: 45%; /* Adjust width to align side by side */
         display: flex;
         flex-direction: column;
-        width: 50%;
       }
 
       label {
@@ -155,13 +172,13 @@
         background-color: #f9fafb;
         font-size: 10px;
         color: #333;
-        width: 50%;
+        width: 7cqi;
       }
 
       select:focus {
         outline: none;
         border-color: #ec4899;
-        box-shadow: 0 0 5px rgba(250, 128, 6, 0.5);
+        box-shadow: 0 0 5px rgba(250, 6, 156, 0.5);
       }
 
       .footer {
@@ -171,20 +188,20 @@
       .footers {
         text-align: right;
         margin-top: 10px;
-        font-size: 16px;
+        font-size: 13px;
         font-weight: lighter;
         color: #ccc;
       }
 
       .row {
-        display: flex; 
-        justify-content: space-between; 
-        align-items: center; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .column {
-        flex: 1; 
-        padding: 7px; 
+        flex: 1;
+        padding: 7px;
       }
 
       .free-delivery {
@@ -231,9 +248,8 @@
         font-weight: bold;
       }
       .up-text {
-        font-size: 12px;
-        display: block; 
-        margin-bottom: -5px;
+        font-size: 10px;
+        display: block;
         font-weight: lighter;
       }
     </style>
@@ -246,30 +262,81 @@
         <span class="line"></span>
       </div>
       <!-- 1 Unit -->
-      <div class="offer-box" onclick="selectOffer(1, 10)">
-        <div class="offer-details">
-          <input type="radio" name="offer" id="unit1" />
-          <label for="unit1" class="offer-label">
-            1 Unit<br />
-            <span class="up-text">Standard Price</span><br />
-          </label>
-          <span class="badge">10% Off</span>
-        </div>
-        <div>
-          <span class="price">$10.00 USD</span>
-          <div class="strike-price">$24.00 USD</div>
+      <div
+      class="offer-box"
+      onclick="selectOffer(1, 10),toggleSelectors(event)"
+    >
+      <div class="offer">
+        <label class="offer-boxs">
+          <div class="offer-details">
+            <input type="radio" name="offer" id="unit1" />
+            <label for="unit1" class="offer-label">
+              1 Unit<br />
+              <span class="up-text">Standard Price</span>
+            </label>
+            <span class="badge">10% Off</span>
+          </div>
+          <div>
+            <span class="price">$10.00 USD</span>
+            <div class="strike-price">$24.00 USD</div>
+          </div>
+        </label>
+        <div class="selectors">
+          <!-- First Row -->
+          <div class="row">
+            <div class="column">
+              <label for="size1">Size:</label>
+              <select id="size1">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </select>
+            </div>
+            <div class="column">
+              <label for="color1">Color:</label>
+              <select id="color1">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Red">Red</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Second Row -->
+          <div class="row">
+            <div class="column">
+              <label for="size2">Size:</label>
+              <select id="size2">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </select>
+            </div>
+            <div class="column">
+              <label for="color2">Color:</label>
+              <select id="color2">
+                <option value="Black">Black</option>
+                <option value="White">White</option>
+                <option value="Red">Red</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
 
       <!-- 2 Unit -->
-      <div class="offer-box selected" onclick="selectOffer(2, 18)">
+      <div
+        class="offer-box selected"
+        onclick="selectOffer(2, 18),toggleSelectors(event)"  
+      >
         <div class="offer">
           <div class="most-popular">MOST POPULAR</div>
           <label class="offer-boxs">
             <div class="offer-details">
               <input type="radio" name="offer" id="unit1" />
-              <label for="unit1" class="offer-label">1 Unit</label>
-              <span class="badge">10% Off</span>
+              <label for="unit1" class="offer-label">2 Unit</label>
+              <span class="badge">20% Off</span>
             </div>
             <div>
               <span class="price">$18.00 USD</span>
@@ -277,54 +344,107 @@
             </div>
           </label>
           <div class="selectors">
-            <div class="column">
-              <label for="size">Size:</label>
-              <select id="size">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-              </select>
+            <!-- First Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size1">Size:</label>
+                <select id="size1">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color1">Color:</label>
+                <select id="color1">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
             </div>
-            <div class="column">
-              <label for="color">Color:</label>
-              <select id="color">
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Red">Red</option>
-              </select>
-            </div>
-          </div>
-          <div class="selectors">
-            <div class="column">
-              <label for="size">Size:</label>
-              <select id="size">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-              </select>
-            </div>
-            <div class="column">
-              <label for="color">Color:</label>
-              <select id="color">
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Red">Red</option>
-              </select>
+
+            <!-- Second Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size2">Size:</label>
+                <select id="size2">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color2">Color:</label>
+                <select id="color2">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- 3 Unit -->
-      <div class="offer-box" onclick="selectOffer(3, 24)">
-        <div class="offer-details">
-          <input type="radio" name="offer" id="unit3" />
-          <label for="unit3" class="offer-label">3 Unit</label>
-          <span class="badge">30% Off</span>
-        </div>
-        <div>
-          <span class="price">$24.00 USD</span>
-          <div class="strike-price">$24.00 USD</div>
+      <div
+        class="offer-box "
+        onclick="selectOffer(3, 24),toggleSelectors(event)"
+      >
+        <div class="offer">
+          <label class="offer-boxs">
+            <div class="offer-details">
+              <input type="radio" name="offer" id="unit1" />
+              <label for="unit1" class="offer-label">3 Unit</label>
+              <span class="badge">30% Off</span>
+            </div>
+            <div>
+              <span class="price">$24.00 USD</span>
+              <div class="strike-price">$24.00 USD</div>
+            </div>
+          </label>
+          <div class="selectors">
+            <!-- First Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size1">Size:</label>
+                <select id="size1">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color1">Color:</label>
+                <select id="color1">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size2">Size:</label>
+                <select id="size2">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color2">Color:</label>
+                <select id="color2">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -360,6 +480,28 @@
         // Update total
         document.getElementById("total").innerText = `$${price.toFixed(2)} USD`;
       }
+      function toggleSelectors(event) {
+  event.stopPropagation(); // Prevent click events from propagating to parent elements
+
+  // Close any other open selectors
+  document.querySelectorAll(".selectors.open").forEach((selector) => {
+    selector.classList.remove("open");
+  });
+
+  // Toggle the current selectors
+  const selectors = event.currentTarget.querySelector(".selectors");
+  if (selectors) {
+    selectors.classList.toggle("open");
+  }
+}
+
+// Optional: Close all selectors when clicking outside
+document.body.addEventListener("click", () => {
+  document.querySelectorAll(".selectors.open").forEach((selector) => {
+    selector.classList.remove("open");
+  });
+});
+
     </script>
   </body>
 </html>
