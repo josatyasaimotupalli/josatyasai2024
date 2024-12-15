@@ -146,14 +146,14 @@
       }
       .row {
         display: flex;
-        justify-content: space-between; /* Distribute columns equally */
-        gap: 20px; /* Space between columns */
+        justify-content: space-between; 
+        gap: 20px;
       }
 
       /* Each column inside a row */
       .column {
-        flex: 1; /* Take equal space */
-        max-width: 45%; /* Adjust width to align side by side */
+        flex: 1; 
+        max-width: 45%; 
         display: flex;
         flex-direction: column;
       }
@@ -263,72 +263,72 @@
       </div>
       <!-- 1 Unit -->
       <div
-      class="offer-box"
-      onclick="selectOffer(1, 10),toggleSelectors(event)"
-    >
-      <div class="offer">
-        <label class="offer-boxs">
-          <div class="offer-details">
-            <input type="radio" name="offer" id="unit1" />
-            <label for="unit1" class="offer-label">
-              1 Unit<br />
-              <span class="up-text">Standard Price</span>
-            </label>
-            <span class="badge">10% Off</span>
-          </div>
-          <div>
-            <span class="price">$10.00 USD</span>
-            <div class="strike-price">$24.00 USD</div>
-          </div>
-        </label>
-        <div class="selectors">
-          <!-- First Row -->
-          <div class="row">
-            <div class="column">
-              <label for="size1">Size:</label>
-              <select id="size1">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-              </select>
+        class="offer-box"
+        onclick="selectOffer(1, 10),toggleSelectors(event)"
+      >
+        <div class="offer">
+          <label class="offer-boxs">
+            <div class="offer-details">
+              <input type="radio" name="offer" id="unit1" />
+              <label for="unit1" class="offer-label">
+                1 Unit<br />
+                <span class="up-text">Standard Price</span>
+              </label>
+              <span class="badge">10% Off</span>
             </div>
-            <div class="column">
-              <label for="color1">Color:</label>
-              <select id="color1">
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Red">Red</option>
-              </select>
+            <div>
+              <span class="price">$10.00 USD</span>
+              <div class="strike-price">$24.00 USD</div>
             </div>
-          </div>
+          </label>
+          <div class="selectors">
+            <!-- First Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size1">Size:</label>
+                <select id="size1">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color1">Color:</label>
+                <select id="color1">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
+            </div>
 
-          <!-- Second Row -->
-          <div class="row">
-            <div class="column">
-              <label for="size2">Size:</label>
-              <select id="size2">
-                <option value="S">S</option>
-                <option value="M">M</option>
-                <option value="L">L</option>
-              </select>
-            </div>
-            <div class="column">
-              <label for="color2">Color:</label>
-              <select id="color2">
-                <option value="Black">Black</option>
-                <option value="White">White</option>
-                <option value="Red">Red</option>
-              </select>
+            <!-- Second Row -->
+            <div class="row">
+              <div class="column">
+                <label for="size2">Size:</label>
+                <select id="size2">
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                </select>
+              </div>
+              <div class="column">
+                <label for="color2">Color:</label>
+                <select id="color2">
+                  <option value="Black">Black</option>
+                  <option value="White">White</option>
+                  <option value="Red">Red</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
       <!-- 2 Unit -->
       <div
         class="offer-box selected"
-        onclick="selectOffer(2, 18),toggleSelectors(event)"  
+        onclick="selectOffer(2, 18),toggleSelectors(event)"
       >
         <div class="offer">
           <div class="most-popular">MOST POPULAR</div>
@@ -389,7 +389,7 @@
 
       <!-- 3 Unit -->
       <div
-        class="offer-box "
+        class="offer-box"
         onclick="selectOffer(3, 24),toggleSelectors(event)"
       >
         <div class="offer">
@@ -481,27 +481,26 @@
         document.getElementById("total").innerText = `$${price.toFixed(2)} USD`;
       }
       function toggleSelectors(event) {
-  event.stopPropagation(); // Prevent click events from propagating to parent elements
+        event.stopPropagation(); 
 
-  // Close any other open selectors
-  document.querySelectorAll(".selectors.open").forEach((selector) => {
-    selector.classList.remove("open");
-  });
+        // Close any other open selectors
+        document.querySelectorAll(".selectors.open").forEach((selector) => {
+          selector.classList.remove("open");
+        });
 
-  // Toggle the current selectors
-  const selectors = event.currentTarget.querySelector(".selectors");
-  if (selectors) {
-    selectors.classList.toggle("open");
-  }
-}
+        // Toggle the current selectors
+        const selectors = event.currentTarget.querySelector(".selectors");
+        if (selectors) {
+          selectors.classList.toggle("open");
+        }
+      }
 
-// Optional: Close all selectors when clicking outside
-document.body.addEventListener("click", () => {
-  document.querySelectorAll(".selectors.open").forEach((selector) => {
-    selector.classList.remove("open");
-  });
-});
-
+      // Optional: Close all selectors when clicking outside
+      document.body.addEventListener("click", () => {
+        document.querySelectorAll(".selectors.open").forEach((selector) => {
+          selector.classList.remove("open");
+        });
+      });
     </script>
   </body>
 </html>
